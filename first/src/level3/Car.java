@@ -18,8 +18,6 @@ public class Car {
 		this.cc = cc;
 	}
 
-
-
 	public void introduceMyCar() {
 		System.out.printf("%s의 컬러는 %s이고 %dcc이다.\n"
 				, name, color, cc);
