@@ -1,4 +1,4 @@
-package level3;
+package com.kita.first.level3;
 
 public class BoardTest {
 	public static void main(String[] args) {

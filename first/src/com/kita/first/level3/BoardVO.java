@@ -1,4 +1,4 @@
-package level3;
+package com.kita.first.level3;
 
 public class BoardVO {
 	private String title;
@@ -19,7 +19,7 @@ public class BoardVO {
 	}
 	
 	public String getTitle() {
-		return tilte;
+		return title;
 	}
 	
 	public void setContent(String content) {

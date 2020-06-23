@@ -1,4 +1,4 @@
-package level3;
+package com.kita.first.level3;
 
 //사용자 정의 클래스
 public class Tv {
