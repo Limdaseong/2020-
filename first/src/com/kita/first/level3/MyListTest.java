@@ -8,17 +8,24 @@ public class MyListTest {
 		list.add(10);
 		list.add(15);
 		list.add(20);
-		// list.add(1,12);
 
-		int len = list.size(); // 2
-		System.out.println(len);
-		int val = list.get(1); // 15
-		System.out.println(val);
-		val = list.get(0); // 10
-		System.out.println(val);
+		// int len = list.size(); // 2
+		// System.out.println(len);
+		// int val = list.get(1); // 15
+		// System.out.println(val);
+		// val = list.get(0); // 10
+		// System.out.println(val);
 
-		// list.removeLast();
-		list.removeSelectIndex(1);
+		list.remove(0);
+		list.add(1, 12);
+
+		//MyArrays.print(list);
+	}
+}
+
+class MyArrays {
+	static void print(MyList list) {
+
 	}
 }
 
@@ -34,29 +41,6 @@ class MyList {
 		arr = new int[0];
 	}
 
-	void add(int num) {
-		int[] temp = new int[arr.length + 1];
-		for (int i = 0; i < arr.length; i++) {
-			temp[i] = arr[i];
-		}
-		temp[arr.length] = num;
-		arr = temp;
-		System.out.println(Arrays.toString(arr));
-	}
-
-	void add(int index, int num) {
-		int[] temp = new int[arr.length + 1];
-		for (int i = 0; i < index; i++) {
-			temp[i] = arr[i];
-		}
-		for (int i = index; i < arr.length; i++) {
-			temp[index + 1] = arr[index];
-		}
-		temp[index] = num;
-		arr = temp;
-		System.out.println(Arrays.toString(arr));
-	}
-
 	int size() {
 		return arr.length;
 	}
@@ -65,32 +49,58 @@ class MyList {
 		return arr[num];
 	}
 
-	void removeLast() {
-		int[] temp = new int[arr.length - 1];
-		for (int i = 0; i < arr.length - 1; i++) {
+	void add(int num) {
+		int[] temp = new int[arr.length + 1];
+		for (int i = 0; i < arr.length; i++) {
 			temp[i] = arr[i];
 		}
+		temp[arr.length] = num;
 		arr = temp;
-		System.out.println(Arrays.toString(arr));
+		add(arr.length, num);
 	}
 
-	void removeSelectIndex(int num) {
-		int[] temp = new int[arr.length - 1];
-		/*for (int i = 0; i < num; i++) {
-			temp[i] = arr[i];
+	void add(int idx, int num) {
+		int[] temp = new int[arr.length + 1];
+		for (int i = 0; i < arr.length; i++) {
+			temp[i < idx ? i : i + 1] = arr[i];
 		}
-		for (int i = num; i < arr.length-1; i++) {
-			temp[i] = arr[i+1];
-		}*/
-		for(int i=0;i<arr.length;i++) {
-			if(i<num) {
-				temp[i] = arr[i];
-			}else if(i>num){
-				temp[i-1] = arr[i];
-			}
-		}
+		temp[idx] = num;
 		arr = temp;
-		System.out.println(Arrays.toString(arr));
+	}
+
+	/*
+	 * int removeLast() { int[] temp = new int[arr.length - 1]; int saveCnt = 0; for
+	 * (int i = 0; i < arr.length; i++) { if (i != arr.length - 1) { temp[i] =
+	 * arr[i]; } else { saveCnt = arr[i]; } } arr = temp;
+	 * System.out.println(Arrays.toString(arr)); return saveCnt; }
+	 */
+
+	/*
+	 * int remove(int num) { int[] temp = new int[arr.length - 1]; for (int i = 0; i
+	 * < arr.length; i++) { if (i < num) { temp[i] = arr[i]; } else { temp[i] =
+	 * arr[i + 1]; } } int delVal = arr[num]; arr = temp; return delVal; }
+	 * 
+	 * int remove() { return remove(arr.length - 1); }
+	 */
+
+	int remove(int idx) {
+		int[] temp = new int[arr.length - 1];
+		for (int i = 0; i < arr.length; i++) {
+			if (i < idx) {
+				temp[i] = arr[i];
+			} else {
+				temp[i] = arr[i + 1];
+			}
+			temp[i] = arr[i < idx ? i : i + 1];
+		}
+		int delVal = arr[idx];
+		arr = temp;
+		return delVal;
+	}
+
+	int remove() {
+
+		return remove(arr.length - 1);
 	}
 
 }
