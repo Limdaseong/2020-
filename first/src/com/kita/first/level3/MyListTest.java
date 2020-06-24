@@ -19,14 +19,26 @@ public class MyListTest {
 		list.remove(0);
 		list.add(1, 12);
 
-		//MyArrays.print(list);
+		// MyArrays.print(list);
 	}
 }
 
 class MyArrays {
-	static void print(MyList list) {
-
+	/*
+	 * static void print(MyList list) { for (int i = 0; i < list.size(); i++) {
+	 * System.out.printf(i < list.size() - 1 ? "%d, " : "%d", list.get(i)); } }
+	 */
+	static String toString(MyList list) {
+		String str = "";
+		for(int i=0;i<list.size();i++) {
+			if(i>0) {
+				System.out.print(", ");
+			}
+			str+=list.get(i);
+		}
+		return String.format("[%s]",str);
 	}
+	
 }
 
 class MyList {
@@ -49,16 +61,6 @@ class MyList {
 		return arr[num];
 	}
 
-	void add(int num) {
-		int[] temp = new int[arr.length + 1];
-		for (int i = 0; i < arr.length; i++) {
-			temp[i] = arr[i];
-		}
-		temp[arr.length] = num;
-		arr = temp;
-		add(arr.length, num);
-	}
-
 	void add(int idx, int num) {
 		int[] temp = new int[arr.length + 1];
 		for (int i = 0; i < arr.length; i++) {
@@ -66,6 +68,10 @@ class MyList {
 		}
 		temp[idx] = num;
 		arr = temp;
+	}
+
+	void add(int num) {
+		add(arr.length, num);
 	}
 
 	/*
@@ -86,11 +92,6 @@ class MyList {
 	int remove(int idx) {
 		int[] temp = new int[arr.length - 1];
 		for (int i = 0; i < arr.length; i++) {
-			if (i < idx) {
-				temp[i] = arr[i];
-			} else {
-				temp[i] = arr[i + 1];
-			}
 			temp[i] = arr[i < idx ? i : i + 1];
 		}
 		int delVal = arr[idx];
@@ -99,7 +100,6 @@ class MyList {
 	}
 
 	int remove() {
-
 		return remove(arr.length - 1);
 	}
 
