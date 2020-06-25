@@ -23,6 +23,7 @@ public class GreatMission1 {
 				}
 			}
 		}
+		
 
 		System.out.print("중복되지 않게 1~9의 숫자를 3번 입력하세요");
 
