@@ -19,9 +19,9 @@ public class MyBall {
 	public void setNumbers() {
 		for (int i = 0; i < myArr.length; i++) {
 			System.out.printf("숫자 %d: ", i+1);
-			myArr[i] = scanner.nextInt();
+			String val = scanner.nextLine();
 			try {
-				myArr[i] = Integer.parseInt(val)
+				myArr[i] = Integer.parseInt(val);
 			} catch (Exception e) {
 				myArr[i] =0;
 			}
@@ -43,12 +43,9 @@ public class MyBall {
 				}
 			}
 		}
-		System.out.println(Arrays.toString(myArr));
 	}
 	
-	void start() {
-		while(true) {
-			
-		}
+	public int get(int idx) {
+		return myArr[idx];
 	}
 }

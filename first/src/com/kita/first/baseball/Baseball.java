@@ -17,9 +17,9 @@ public class Baseball {
 	}
 
 	private void setRandom() {
-		Random random = new Random();
 		for (int i = 0; i < rArr.length; i++) {
 			rArr[i] = (int) (Math.random() * 9 + 1);
+			
 			for (int z = 0; z < i; z++) {
 				if (rArr[i] == rArr[z]) {
 					i--;
@@ -28,7 +28,10 @@ public class Baseball {
 			}
 		}
 	}
-	public int get
+	
+	public int get(int idx) {
+		return rArr[idx];
+	}
 
 
 }
