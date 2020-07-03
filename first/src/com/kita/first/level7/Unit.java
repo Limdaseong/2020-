@@ -15,17 +15,19 @@ public class Unit {
 		return current_hp;
 	}
 
+	public void setCurrent_hp(int hp) {
+		this.current_hp = hp;
+	}
+
 	public void move(int x, int y) {
 		System.out.printf("x:%d, y:%d 좌표로 이동\n", x, y);
 	}
-	
+
 	public void getDamage(int damage) {
 		current_hp -= damage;
 	}
-	
+
 	public String toString() {
-		return String.format("%s 현재 HP : %d",NAME, current_hp);
+		return String.format("%s 현재 HP : %d", NAME, current_hp);
 	}
-	
-	public 
 }
